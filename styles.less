@@ -1,0 +1,118 @@
+body
+{
+    font-size: 16px;
+    margin: 0px;
+}
+
+div#container
+{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+div#echo-background
+{
+    background-image: url('images/FromTop.png');
+    background-size: 75% 75%;
+   	background-position: center;
+   	background-repeat: no-repeat;
+    width: 30rem;
+    height: 30rem;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+
+div#echo-pcb
+{
+    background-image: url('images/PCB.png');
+    background-size: 75% 75%;
+   	background-position: center;
+   	background-repeat: no-repeat;
+    width: 30rem;
+    height: 30rem;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+
+div#led-layer
+{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 100;
+    background-color: #DDF;
+    padding: 5px;
+}
+
+.radial-gradient
+{
+    background: rgba(255,0,0,1);/* Old Browsers */
+    background: -moz-radial-gradient(center, ellipse cover, rgba(255,0,0,1) 0%, rgba(254,3,2,1) 6%, rgba(240,36,25,0) 64%, rgba(231,56,39,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,0,0,1)), color-stop(6%, rgba(254,3,2,1)), color-stop(64%, rgba(240,36,25,0)), color-stop(100%, rgba(231,56,39,0)));/* Chrome, Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(255,0,0,1) 0%, rgba(254,3,2,1) 6%, rgba(240,36,25,0) 64%, rgba(231,56,39,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, rgba(255,0,0,1) 0%, rgba(254,3,2,1) 6%, rgba(240,36,25,0) 64%, rgba(231,56,39,0) 100%); /* Opera 11.10+ */
+    background: -ms-radial-gradient(center, ellipse cover, rgba(255,0,0,1) 0%, rgba(254,3,2,1) 6%, rgba(240,36,25,0) 64%, rgba(231,56,39,0) 100%); /* IE 10+ */
+    background: radial-gradient(ellipse at center, rgba(255,0,0,1) 0%, rgba(254,3,2,1) 6%, rgba(240,36,25,0) 64%, rgba(231,56,39,0) 100%);/* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#e73827', GradientType=1 );/* IE6-9 fallback on horizontal gradient */
+}
+
+div#leds
+{
+    background-size: 100% 100%;
+    width: 30rem;
+    height: 30rem;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+
+    & > .led
+    {
+        width: 10rem;
+        height: 10rem;
+
+        position: absolute;
+
+        .radial-gradient;
+
+        &#led1  { left:  3.0rem; top:  2.7rem; }
+        &#led2  { left:  7.0rem; top:  0.0rem; }
+        &#led3  { left: 13.0rem; top:  0.0rem; }
+        &#led4  { left: 17.0rem; top:  2.7rem; }
+        &#led5  { left: 19.7rem; top:  7.0rem; }
+        &#led6  { left: 19.7rem; top: 12.0rem; }
+        &#led7  { left: 17.0rem; top: 17.0rem; }
+        &#led8  { left: 13.0rem; top: 19.7rem; }
+        &#led9  { left:  7.0rem; top: 19.7rem; }
+        &#led10 { left:  3.0rem; top: 17.0rem; }
+        &#led11 { left:  0.0rem; top: 12.0rem; }
+        &#led12 { left:  0.0rem; top:  7.0rem; }
+    }
+}
