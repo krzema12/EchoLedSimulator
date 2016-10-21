@@ -6,14 +6,17 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
     </head>
-    <body ng-app>
+    <body ng-app="echo-led-simulator" ng-controller="EchoLedSimulatorController">
         <div id="container">
-            <div id="led-layer">
-                <input type="checkbox" ng-model="showPcb" checked="checked"> Show PCB with LEDs
+            <div id="pcb-preview-layer-checkbox-group">
+                <input type="checkbox" ng-model="showPcb" checked="checked"> Show PCB preview
+            </div>
+            <div id="leds-layer-checkbox-group">
+                <input type="checkbox" ng-model="showLeds" checked="checked"> Show LEDs
             </div>
             <div id="echo-background"></div>
             <div id="echo-pcb" ng-show="showPcb"></div>
-            <div id="leds">
+            <div id="leds" ng-show="showLeds">
                 <div id="led1" class="led"></div>
                 <div id="led2" class="led"></div>
                 <div id="led3" class="led"></div>
@@ -29,4 +32,5 @@
             </div>
         </div>
     </body>
+    <script src="js/controller.js"></script>
 </html>
