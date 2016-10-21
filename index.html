@@ -17,18 +17,10 @@
             <div id="echo-background"></div>
             <div id="echo-pcb" ng-show="showPcb"></div>
             <div id="leds" ng-show="showLeds">
-                <div id="led1" class="led"></div>
-                <div id="led2" class="led"></div>
-                <div id="led3" class="led"></div>
-                <div id="led4" class="led"></div>
-                <div id="led5" class="led"></div>
-                <div id="led6" class="led"></div>
-                <div id="led7" class="led"></div>
-                <div id="led8" class="led"></div>
-                <div id="led9" class="led"></div>
-                <div id="led10" class="led"></div>
-                <div id="led11" class="led"></div>
-                <div id="led12" class="led"></div>
+                <div class="led"
+                     ng-repeat="i in range(0, 11)"
+                     ng-style="{ 'opacity': getOpacityForLed(i), 'background': 'radial-gradient(ellipse at center, ' + getColorForLed(i, 1.0) + ' 0%, ' + getColorForLed(i, 1.0) + ' 6%, ' + getColorForLed(i, 0.0) + ' 64%, ' + getColorForLed(i, 0.0) + ' 100%)' }"
+                     ng-attr-id="{{ 'led' + i }}"/>
             </div>
         </div>
     </body>
