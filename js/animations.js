@@ -7,7 +7,7 @@ $(document).ready(function() {
         });
     };
 
-    // ========== Start registering animation here. ===========
+    // ========== Start registering animations here. ===========
 
     registerAnimation({
         name: 'Rainbow',
