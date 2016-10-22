@@ -43,7 +43,7 @@ $(document).ready(function() {
 
     registerAnimation({
         name: 'Rotating colorful points',
-        duration: 4000,
+        duration: 7000,
         step: 0.01,
         beforeAnimation: function(ledIndex, currentLed) {
             var hsv = hsvToRgb(ledIndex/12, 1.0, 1.0);
@@ -51,15 +51,12 @@ $(document).ready(function() {
         },
         descriptionFunction: function(progress, ledIndex, currentLed) {
             var currentLedIndexToShine = parseInt(progress*4*12.0) % 12;
-
-            if (ledIndex == currentLedIndexToShine || ledIndex == (currentLedIndexToShine + 6) || ledIndex == (currentLedIndexToShine - 6)) {
-                currentLed.brightness = 1.0;
-            } else {
-                currentLed.brightness = 0.0;
-            }
+            var distanceBetweenThisAndDesiredLed = (currentLedIndexToShine - ledIndex + 12) % 12;
+            currentLed.brightness = 1.0 - distanceBetweenThisAndDesiredLed/12;
+            currentLed.brightness *= currentLed.brightness*currentLed.brightness;
         },
         afterAnimation: function(ledIndex, currentLed) {
-            currentLed.brightness = 0.0;
+            currentLed.brightness = 1.0;
         }});
 });
 
