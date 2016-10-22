@@ -2,22 +2,12 @@ angular.module('controllers', []).controller('EchoLedSimulatorController', funct
     $scope.showLeds = true;
     $scope.showPcb = false;
 
-    $scope.leds = [
-        { color: { red: 0, green: 0, blue: 50 } },
-        { color: { red: 255, green: 255, blue: 0 } },
-        { color: { red: 0, green: 0, blue: 0 } },
-        { color: { red: 255, green: 255, blue: 0 } },
-        { color: { red: 0, green: 255, blue: 0 }, brightness: 0.0 },
-        { color: { red: 0, green: 255, blue: 0 } },
-        { color: { red: 0, green: 255, blue: 0 } },
-        { color: { red: 255, green: 255, blue: 0 } },
-        { color: { red: 0, green: 255, blue: 0 }, brightness: 0.0 },
-        { color: { red: 0, green: 255, blue: 0 }, brightness: 0.0 },
-        { color: { red: 0, green: 255, blue: 0 }, brightness: 0.5 },
-        { color: { red: 0, green: 0, blue: 255 } },
-    ];
-
+    $scope.leds = [ /* All LEDs are turned off at the beginning, see the below init loop. */ ];
     $scope.animations = [ /* To be registered by the client. */ ];
+
+    for (i=0; i<12; i++) {
+        $scope.leds.push({ color: { red: 0, green: 255, blue: 0 }, brightness: 0.0 });
+    }
 
     $scope.getColorForLed = function(i, alpha) {
         var colorForThisLed = $scope.leds[i] === undefined || $scope.leds[i].color === undefined ?
@@ -57,6 +47,6 @@ angular.module('controllers', []).controller('EchoLedSimulatorController', funct
             }, animation.duration + 20);
         }});
 
-        console.log('Animation registered: ' + name);
+        console.log('Animation registered: ' + animation.name);
     };
 });
