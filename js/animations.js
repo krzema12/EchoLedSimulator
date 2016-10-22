@@ -49,7 +49,7 @@ $(document).ready(function() {
             var hsv = hsvToRgb(ledIndex/12, 1.0, 1.0);
             currentLed.color = { red: hsv.r, green: hsv.g, blue: hsv.b };
         },
-        descriptionFunction: function(progress, ledIndex, currentLed) {
+        animation: function(progress, ledIndex, currentLed) {
             var currentLedIndexToShine = parseInt(progress*4*12.0) % 12;
             var distanceBetweenThisAndDesiredLed = (currentLedIndexToShine - ledIndex + 12) % 12;
             currentLed.brightness = 1.0 - distanceBetweenThisAndDesiredLed/12;

@@ -45,7 +45,7 @@ angular.module('echo-led-simulator', []).controller('EchoLedSimulatorController'
                 angular.forEach($scope.leds, function(led, index) {
                     var llProgress = localProgress; // Bleh, nasty... TODO: fix it with closures or sth.
                     $timeout(function() {
-                        animation.descriptionFunction(llProgress, index, led);
+                        animation.animation(llProgress, index, led);
                     }, parseInt(localProgress*animation.duration));
                 });
             }
