@@ -1,4 +1,4 @@
-angular.module('echo-led-simulator', []).controller('EchoLedSimulatorController', function($scope, $timeout) {
+angular.module('controllers', []).controller('EchoLedSimulatorController', function($scope, $timeout) {
     $scope.showLeds = true;
     $scope.showPcb = false;
 
@@ -58,14 +58,5 @@ angular.module('echo-led-simulator', []).controller('EchoLedSimulatorController'
         }});
 
         console.log('Animation registered: ' + name);
-    };
-
-    $scope.range = function(min, max, step) {
-        step = step || 1;
-        var input = [];
-        for (var i = min; i <= max; i += step) {
-            input.push(i);
-        }
-        return input;
     };
 });
