@@ -1,6 +1,6 @@
 ![Rainbow animation](images/Rainbow.gif)
 
-Hey, this is just a GIF, here's live demo: http://krzeminski.it/amazon/echoledsimulator/
+Hey, this is just a GIF, here's live demo: https://krzema12.github.io/EchoLedSimulator/
 
 # Echo LED Simulator
 
