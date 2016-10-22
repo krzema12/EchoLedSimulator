@@ -28,5 +28,29 @@ $(document).ready(function() {
             currentLed.brightness = 1.0;
         }
     });
+
+    registerAnimation({
+        name: 'Heartbeat (for AM)',
+        duration: 2000,
+        step: 0.01,
+        repeats: 4,
+        beforeAnimation: function(ledIndex, currentLed) {
+            currentLed.color = { red: 255, green: 0, blue: 0 };
+        },
+        animation: function(progress, ledIndex, currentLed) {
+            var sinArgument = (progress >= 0.3333 && progress <= 0.5) || (progress >= 0.83333 && progress <= 1.0) ? 0.0 : progress*2.0*Math.PI/0.3333333;
+            var absSinValue = Math.abs(Math.sin(sinArgument));
+
+
+            if ((progress < 0.5 && ledIndex < 6) || (progress >= 0.5 && ledIndex >= 6)) {
+                currentLed.brightness = absSinValue;
+            } else {
+                currentLed.brightness = 0.0;
+            }
+        },
+        afterAnimation: function(ledIndex, currentLed) {
+            currentLed.brightness = 0.0;
+        }
+    });
 });
 

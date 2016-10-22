@@ -24,6 +24,7 @@ angular.module('controllers', []).controller('EchoLedSimulatorController', funct
     $scope.registerAnimation = function(animation) {
         $scope.animations.push({ name: animation.name, animate: function() {
             console.log('Starting animation: ' + animation.name);
+            console.log(animation);
 
             angular.forEach($scope.leds, function(led, index) {
                 animation.beforeAnimation(index, led);
