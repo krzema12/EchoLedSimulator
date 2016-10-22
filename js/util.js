@@ -1,15 +1,18 @@
-/* accepts parameters
- * h  Object = {h:x, s:y, v:z}
- * OR
- * h, s, v
- * h is in degrees
+/*
+ * Converts color given in HSV to RGB.
+ *
+ * Arguments:
+ *   * h - hue, from 0 to 360 degrees
+ *   * s - saturation, from 0.0 to 1.1
+ *   * v - value, from 0.0 to 1.1
+ *
+ * Returns:
+ *   An object with keys: 'red', 'green', 'blue'.
+ *
  * Source: http://stackoverflow.com/questions/17242144/javascript-convert-hsb-hsv-color-to-rgb-accurately
 */
 var hsvToRgb = function (h, s, v) {
     var r, g, b, i, f, p, q, t;
-    if (arguments.length === 1) {
-        s = h.s, v = h.v, h = h.h;
-    }
     i = Math.floor(h * 6);
     f = h * 6 - i;
     p = v * (1 - s);
@@ -24,8 +27,8 @@ var hsvToRgb = function (h, s, v) {
         case 5: r = v, g = p, b = q; break;
     }
     return {
-        r: Math.round(r * 255),
-        g: Math.round(g * 255),
-        b: Math.round(b * 255)
+        red: Math.round(r * 255),
+        green: Math.round(g * 255),
+        blue: Math.round(b * 255)
     };
 };

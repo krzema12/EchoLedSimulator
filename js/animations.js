@@ -14,8 +14,7 @@ $(document).ready(function() {
         duration: 7000,
         step: 0.01,
         beforeAnimation: function(ledIndex, currentLed) {
-            var hsv = hsvToRgb(ledIndex/12, 1.0, 1.0);
-            currentLed.color = { red: hsv.r, green: hsv.g, blue: hsv.b };
+            currentLed.color = hsvToRgb(ledIndex/12, 1.0, 1.0);
         },
         animation: function(progress, ledIndex, currentLed) {
             var currentLedIndexToShine = parseInt(progress*4*12.0) % 12;
