@@ -42,7 +42,7 @@ $(document).ready(function() {
     };
 
     registerAnimation({
-        name: 'Rotating colorful points',
+        name: 'Rainbow',
         duration: 7000,
         step: 0.01,
         beforeAnimation: function(ledIndex, currentLed) {
