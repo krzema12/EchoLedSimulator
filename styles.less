@@ -75,6 +75,51 @@ div#leds-layer-checkbox-group
     padding: 5px;
 }
 
+.polar(@angle, @centerX, @centerY, @radius)
+{
+    left: @centerX + sin(@angle)*@radius;
+    top: @centerY - cos(@angle)*@radius;
+}
+
+.ledPositionPolar(@angle)
+{
+    .polar(@angle, 10.0rem, 9.85rem, 9.85rem);
+}
+
+@mic-offset: 32deg; // Angle between vertical axis and the first microphone.
+
+@mic1-angle: -180deg + @mic-offset;
+@mic2-angle:  -90deg;
+@mic3-angle:  -@mic-offset;
+@mic4-angle:   @mic-offset;
+@mic5-angle:   90deg;
+@mic6-angle:  180deg - @mic-offset;
+
+@mic-angles: mic1-angle, mic2-angle, mic3-angle, mic4-angle, mic5-angle, mic6-angle;
+
+@led-offset: 13deg; // Distance in degrees between a microphone and an LED.
+
+.leds-loop-inner (@i) when (@i >= 0)
+{
+    &#led@{i}
+    {
+        @mic-angle-index: floor((@i + 2)/2);
+        @name: extract(@mic-angles, @mic-angle-index);
+
+        @this-led-offset: (mod(@i, 2)*2 - 1)*@led-offset;
+
+        .ledPositionPolar(@@name + @this-led-offset);
+    }
+    .leds-loop-inner(@i - 1);
+}
+
+.leds-loop (@quantity)
+{
+    .leds-loop-inner(@quantity - 1);
+}
+
+@leds-quantity: 12;
+
 div#leds
 {
     background-size: 100% 100%;
@@ -101,18 +146,7 @@ div#leds
 
         position: absolute;
 
-        &#led0  { left:  3.0rem; top:  2.7rem; }
-        &#led1  { left:  7.0rem; top:  0.0rem; }
-        &#led2  { left: 13.0rem; top:  0.0rem; }
-        &#led3  { left: 17.0rem; top:  2.7rem; }
-        &#led4  { left: 19.7rem; top:  7.0rem; }
-        &#led5  { left: 19.7rem; top: 12.0rem; }
-        &#led6  { left: 17.0rem; top: 17.0rem; }
-        &#led7  { left: 13.0rem; top: 19.7rem; }
-        &#led8  { left:  7.0rem; top: 19.7rem; }
-        &#led9  { left:  3.0rem; top: 17.0rem; }
-        &#led10 { left:  0.0rem; top: 12.0rem; }
-        &#led11 { left:  0.0rem; top:  7.0rem; }
+        .leds-loop(@leds-quantity);
     }
 }
 
@@ -131,4 +165,28 @@ div#masking-leds
     top: 0;
     bottom: 0;
     margin: auto;
+}
+
+// Debug utilities.
+
+.debug(@var) {
+  &:after {
+    content: ~`console.log("@{var}"), "@{var}"`;
+    font-size: 20px;
+    background-color: #fff;
+    border: 1px solid red;
+    padding: 10px;
+    border-radius: 5px;
+    color: red;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+
+.log(@var) {
+  &:after {
+    content: ~`console.log("@{var}"), "@{var}"`;
+  }
 }
