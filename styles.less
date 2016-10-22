@@ -87,6 +87,8 @@ div#leds
     bottom: 0;
     margin: auto;
 
+    mix-blend-mode: screen;
+
     max-width: 100%;
     max-height: 100%;
     overflow: auto;
@@ -97,8 +99,6 @@ div#leds
         height: 10rem;
 
         position: absolute;
-
-        mix-blend-mode: overlay;
 
         &#led0  { left:  3.0rem; top:  2.7rem; }
         &#led1  { left:  7.0rem; top:  0.0rem; }
@@ -113,4 +113,21 @@ div#leds
         &#led10 { left:  0.0rem; top: 12.0rem; }
         &#led11 { left:  0.0rem; top:  7.0rem; }
     }
+}
+
+div#masking-leds
+{
+    background-image: url('images/nasty-mask.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 30rem;
+    height: 30rem;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }

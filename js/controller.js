@@ -3,10 +3,10 @@ angular.module('echo-led-simulator', []).controller('EchoLedSimulatorController'
     $scope.showPcb = false;
 
     $scope.leds = [
-        { color: { red: 255, green: 0, blue: 0 } },
-        { color: { red: 0, green: 255, blue: 0 } },
-        { color: { red: 0, green: 255, blue: 0 } },
-        { color: { red: 0, green: 255, blue: 0 } },
+        { color: { red: 0, green: 0, blue: 50 } },
+        { color: { red: 255, green: 255, blue: 0 } },
+        { color: { red: 0, green: 0, blue: 0 } },
+        { color: { red: 255, green: 255, blue: 0 } },
         { color: { red: 0, green: 255, blue: 0 }, brightness: 0.0 },
         { color: { red: 0, green: 255, blue: 0 } },
         { color: { red: 0, green: 255, blue: 0 } },
