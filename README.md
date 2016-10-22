@@ -1,3 +1,5 @@
+![Rainbow animation](images/Rainbow.gif)
+
 # Echo LED Simulator
 
 This simple web app lets you manipulate individual LEDs of a mocked Amazon Echo, and ultimately create animations.
