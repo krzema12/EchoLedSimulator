@@ -19,7 +19,7 @@ angular.module('echo-led-simulator', []).controller('EchoLedSimulatorController'
 
     $scope.animate = function(type) {
         angular.forEach($scope.leds, function(led, index) {
-            led.brightness = 1.0;
+            led.brightness = 0.0;
             led.color = { red: 0, green: 255, blue: 0 };
         });
 
@@ -35,9 +35,15 @@ angular.module('echo-led-simulator', []).controller('EchoLedSimulatorController'
                     } else {
                         led.brightness = 0.0;
                     }
-               }, parseInt(localProgress*5000.0));
+               }, parseInt(localProgress*700.0));
             });
         }
+
+        $timeout(function() {
+            angular.forEach($scope.leds, function(led, index) {
+                led.brightness = 0.0;
+            });
+        }, 720);
     };
 
     $scope.getColorForLed = function(i, alpha) {
