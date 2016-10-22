@@ -4,6 +4,10 @@
         <meta charset="utf-8">
         <link rel="stylesheet/less" type="text/css" href="styles.less"/>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>
+        <script
+                src="https://code.jquery.com/jquery-3.1.1.js"
+                integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+                crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
     </head>
     <body ng-app="echo-led-simulator" ng-controller="EchoLedSimulatorController">
@@ -18,6 +22,9 @@
             </div>
             <div id="leds-layer-checkbox-group">
                 <input type="checkbox" ng-model="showLeds" checked="checked"> Show LEDs
+            </div>
+            <div id="list-of-animations">
+                <button ng-click="animate('test')">Test animation</button>
             </div>
             <div id="echo-background"></div>
             <div id="echo-pcb" ng-show="showPcb"></div>
