@@ -17,34 +17,7 @@ angular.module('echo-led-simulator', []).controller('EchoLedSimulatorController'
         { color: { red: 0, green: 0, blue: 255 } },
     ];
 
-    $scope.animate = function(type) {
-        angular.forEach($scope.leds, function(led, index) {
-            led.brightness = 0.0;
-            led.color = { red: 0, green: 255, blue: 0 };
-        });
-
-        for (progress=0.0; progress<1.0; progress += 0.01) {
-            var localProgress = progress;
-            angular.forEach($scope.leds, function(led, index) {
-                var llProgress = localProgress; // Bleh, nasty... TODO: fix it with closures or sth.
-                $timeout(function() {
-                    var currentLedIndexToShine = parseInt(llProgress*12.0);
-
-                    if (index == currentLedIndexToShine || index == (currentLedIndexToShine + 6) || index == (currentLedIndexToShine - 6)) {
-                        led.brightness = 1.0;
-                    } else {
-                        led.brightness = 0.0;
-                    }
-               }, parseInt(localProgress*700.0));
-            });
-        }
-
-        $timeout(function() {
-            angular.forEach($scope.leds, function(led, index) {
-                led.brightness = 0.0;
-            });
-        }, 720);
-    };
+    $scope.animations = [ /* To be registered by the client. */ ];
 
     $scope.getColorForLed = function(i, alpha) {
         var colorForThisLed = $scope.leds[i] === undefined || $scope.leds[i].color === undefined ?
@@ -56,6 +29,35 @@ angular.module('echo-led-simulator', []).controller('EchoLedSimulatorController'
 
     $scope.getOpacityForLed = function(i) {
         return $scope.leds[i] === undefined || $scope.leds[i].brightness === undefined ? 1.0 : $scope.leds[i].brightness;
+    };
+
+    $scope.registerAnimation = function(animation) {
+        $scope.animations.push({ name: animation.name, animate: function() {
+            console.log('Starting animation: ' + animation.name);
+
+            angular.forEach($scope.leds, function(led, index) {
+                animation.beforeAnimation(index, led);
+            });
+
+            for (progress=0.0; progress<1.0; progress += animation.step) {
+                var localProgress = progress;
+
+                angular.forEach($scope.leds, function(led, index) {
+                    var llProgress = localProgress; // Bleh, nasty... TODO: fix it with closures or sth.
+                    $timeout(function() {
+                        animation.descriptionFunction(llProgress, index, led);
+                    }, parseInt(localProgress*animation.duration));
+                });
+            }
+
+            $timeout(function() {
+                angular.forEach($scope.leds, function(led, index) {
+                    animation.afterAnimation(index, led);
+                });
+            }, animation.duration + 20);
+        }});
+
+        console.log('Animation registered: ' + name);
     };
 
     $scope.range = function(min, max, step) {

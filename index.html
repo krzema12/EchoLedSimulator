@@ -10,7 +10,7 @@
                 crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
     </head>
-    <body ng-app="echo-led-simulator" ng-controller="EchoLedSimulatorController">
+    <body ng-app="echo-led-simulator" id="MainControllerElementId" ng-controller="EchoLedSimulatorController">
         <svg width="0" height="0">
             <mask id="clipPathForLeds">
                 <circle cx="240" cy="240" r="160"/>
@@ -24,7 +24,7 @@
                 <input type="checkbox" ng-model="showLeds" checked="checked"> Show LEDs
             </div>
             <div id="list-of-animations">
-                <button ng-click="animate('test')">Test animation</button>
+                <button ng-click="animation.animate()" ng-repeat="animation in animations">{{ animation.name }}</button>
             </div>
             <div id="echo-background"></div>
             <div id="echo-pcb" ng-show="showPcb"></div>
@@ -38,4 +38,5 @@
         </div>
     </body>
     <script src="js/controller.js"></script>
+    <script src="js/animations.js"></script>
 </html>
