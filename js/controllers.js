@@ -29,22 +29,24 @@ angular.module('controllers', []).controller('EchoLedSimulatorController', funct
                 animation.beforeAnimation(index, led);
             });
 
-            for (progress=0.0; progress<1.0; progress += animation.step) {
-                var localProgress = progress;
+            for (repeat=0; repeat<animation.repeats; repeat++) {
+                for (progress=0.0; progress<1.0; progress += animation.step) {
+                    var localProgress = progress;
 
-                angular.forEach($scope.leds, function(led, index) {
-                    var llProgress = localProgress; // Bleh, nasty... TODO: fix it with closures or sth.
-                    $timeout(function() {
-                        animation.animation(llProgress, index, led);
-                    }, parseInt(localProgress*animation.duration));
-                });
+                    angular.forEach($scope.leds, function(led, index) {
+                        var llProgress = localProgress; // Bleh, nasty... TODO: fix it with closures or sth.
+                        $timeout(function() {
+                            animation.animation(llProgress, index, led);
+                        }, parseInt((localProgress + repeat)*animation.duration));
+                    });
+                }
             }
 
             $timeout(function() {
                 angular.forEach($scope.leds, function(led, index) {
                     animation.afterAnimation(index, led);
                 });
-            }, animation.duration + 20);
+            }, animation.duration*animation.repeats + 20);
         }});
 
         console.log('Animation registered: ' + animation.name);
