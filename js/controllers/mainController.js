@@ -25,31 +25,32 @@ define(['./module', '../animationRegistry'], function(controllers, animationRegi
         };
 
         $scope.animate = function(animation) {
-            console.log('Starting animation: ' + animation.name);
-            console.log(animation);
-
             angular.forEach($scope.leds, function(led, index) {
                 animation.beforeAnimation(index, led);
             });
 
-            for (var repeat=0; repeat<animation.repeats; repeat++) {
+            for (var iteration=0; iteration<animation.iterations; iteration++) {
                 for (var progress=0.0; progress<1.0; progress += animation.step) {
                     var localProgress = progress;
+                    var localIteration = iteration;
 
                     angular.forEach($scope.leds, function(led, index) {
                         var llProgress = localProgress; // Bleh, nasty... TODO: fix it with closures or sth.
+                        var llIteration = localIteration;
                         $timeout(function() {
-                            animation.animation(llProgress, index, led);
-                        }, parseInt((localProgress + repeat)*animation.duration));
+                            animation.animation(llProgress, index, led, llIteration + 1);
+                        }, parseInt((localProgress + iteration)*animation.duration));
                     });
                 }
             }
 
-            $timeout(function() {
-                angular.forEach($scope.leds, function(led, index) {
-                    animation.afterAnimation(index, led);
-                });
-            }, animation.duration*animation.repeats + 20);
+            if (animation.afterAnimation === 'undefined') {
+                $timeout(function() {
+                    angular.forEach($scope.leds, function(led, index) {
+                        animation.afterAnimation(index, led);
+                    });
+                }, animation.duration*animation.iterations + 20);
+            }
         };
     });
 });
