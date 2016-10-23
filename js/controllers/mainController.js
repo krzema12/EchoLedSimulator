@@ -46,7 +46,7 @@ define(['./module', '../animationRegistry'], function(controllers, animationRegi
                 }
             }
 
-            if (animation.afterAnimation === 'undefined') {
+            if (animation.afterAnimation) {
                 $timeout(function() {
                     angular.forEach($scope.leds, function(led, index) {
                         animation.afterAnimation(index, led);
