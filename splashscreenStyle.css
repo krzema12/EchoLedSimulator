@@ -1,0 +1,29 @@
+div#loading-screen
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-color: #323331;
+    background-image: url('images/Rainbow-small.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    text-align: center;
+
+    z-index: 1000;
+}
+
+div#loading-screen span
+{
+    position: absolute;
+    top: 59%;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    font-variant: small-caps;
+
+    color: #DDD;
+}

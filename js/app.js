@@ -1,7 +1,8 @@
 define([
     'angular',
+    'jquery',
     './controllers/index',
-], function(ng) {
+], function(ng, $) {
     'use strict';
 
     var app = ng.module('app', [
@@ -11,6 +12,11 @@ define([
     app.init = function() {
         ng.bootstrap(document, ['app']);
     };
+
+    ng.element(document).ready(function() {
+        $('#loading-screen').fadeOut(1000, function() {
+            $('#loading-screen').remove(); });
+    });
 
     app.run(function($rootScope) {
         console.log('Starting the app!');

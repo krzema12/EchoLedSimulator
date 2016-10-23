@@ -8,9 +8,6 @@ define(['./module', '../animationRegistry'], function(controllers, animationRegi
         $scope.leds = [ /* All LEDs are turned off at the beginning, see the below init loop. */ ];
         $scope.animations = animationRegistry.animations;
 
-        console.log(animationRegistry.animations);
-        console.log($scope.animations);
-
         for (var i=0; i<12; i++) {
             $scope.leds.push({ color: { red: 0, green: 255, blue: 0 }, brightness: 0.0 });
         }

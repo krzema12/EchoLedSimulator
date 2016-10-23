@@ -2,9 +2,15 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <!-- Remove it once Less is generated on server side. -->
+        <link rel="stylesheet" type="text/css" href="splashscreenStyle.css"/>
+
         <link rel="stylesheet/less" type="text/css" href="styles.less"/>
     </head>
     <body id="MainControllerElementId" ng-controller="MainController">
+        <div id="loading-screen" ng-animate-children>
+            <span>Loading...</span>
+        </div>
         <div id="container">
             <div id="pcb-preview-layer-checkbox-group">
                 <input type="checkbox" ng-model="showPcb" checked="checked"> Show PCB preview
