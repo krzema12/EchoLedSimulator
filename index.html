@@ -3,14 +3,8 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet/less" type="text/css" href="styles.less"/>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>
-        <script
-                src="https://code.jquery.com/jquery-3.1.1.js"
-                integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-                crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
     </head>
-    <body ng-app="echo-led-simulator" id="MainControllerElementId" ng-controller="EchoLedSimulatorController">
+    <body id="MainControllerElementId" ng-controller="MainController">
         <svg width="0" height="0">
             <mask id="clipPathForLeds">
                 <circle cx="240" cy="240" r="160"/>
@@ -24,7 +18,7 @@
                 <input type="checkbox" ng-model="showLeds" checked="checked"> Show LEDs
             </div>
             <div id="list-of-animations">
-                <button ng-click="animation.animate()" ng-repeat="animation in animations">{{ animation.name }}</button>
+                <button ng-click="animate(animation)" ng-repeat="(animationName, animation) in animations">{{ animationName }}</button>
             </div>
             <div id="echo-background"></div>
             <div id="echo-pcb" ng-show="showPcb"></div>
@@ -36,10 +30,6 @@
             </div>
             <div id="masking-leds"></div>
         </div>
+        <script type="text/javascript" data-main="js/main.js" src="js/lib/require.js"></script>
     </body>
-    <script src="js/util.js"></script>
-    <script src="js/helpers.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/animations.js"></script>
 </html>

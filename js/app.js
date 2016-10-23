@@ -1,6 +1,21 @@
-angular.module('echo-led-simulator', ['controllers'])
-    .run(function($rootScope) {
-        $rootScope.range =  function(min, max, step) {
+define([
+    'angular',
+    './controllers/index',
+], function(ng) {
+    'use strict';
+
+    var app = ng.module('app', [
+        'app.controllers',
+    ]);
+
+    app.init = function() {
+        ng.bootstrap(document, ['app']);
+    };
+
+    app.run(function($rootScope) {
+        console.log('Starting the app!');
+
+        $rootScope.range = function(min, max, step) {
             step = step || 1;
             var input = [];
 
@@ -8,5 +23,8 @@ angular.module('echo-led-simulator', ['controllers'])
                 input.push(i);
             }
             return input;
-        }
+        };
     });
+
+    return app;
+});
