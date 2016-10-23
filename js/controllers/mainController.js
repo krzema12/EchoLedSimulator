@@ -5,6 +5,7 @@ define(['./module', '../animationRegistry'], function(controllers, animationRegi
         $scope.showLeds = true;
         $scope.showLedsMask = true;
         $scope.showPcb = false;
+        $scope.properBlendingMode = true;
 
         $scope.leds = [ /* All LEDs are turned off at the beginning, see the below init loop. */ ];
         $scope.animations = animationRegistry.animations;
