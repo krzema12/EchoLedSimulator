@@ -46,6 +46,21 @@ define(['./util'], function(util) {
                 currentLed.brightness = 0.0;
             }
         },
+        'Demo of \'screen\' blend mode': {
+            duration: 1000,
+            step: 0.01,
+            iterations: 4,
+            beforeAnimation: function(ledIndex, currentLed) {
+                currentLed.color = { red: 0, green: 0, blue: 0 };
+            },
+            animation: function(progress, ledIndex, currentLed) {
+                currentLed.brightness = ledIndex/12;
+                currentLed.color = { red: 0, green: parseInt(255.0*progress), blue: 0 };
+            },
+            afterAnimation: function(ledIndex, currentLed) {
+                currentLed.brightness = 0.0;
+            }
+        }
     };
 
     return AnimationRegistry;
