@@ -38,8 +38,8 @@ div#echo-pcb
 {
     background-image: url('images/PCB.png');
     background-size: 70% 70%;
-   	background-position: center;
-   	background-repeat: no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 30rem;
     height: 30rem;
 
@@ -55,44 +55,45 @@ div#echo-pcb
     overflow: auto;
 }
 
-div#pcb-preview-layer-checkbox-group
+div#checkboxes
 {
+    color: #DDD;
     position: absolute;
     top: 100px;
     left: 100px;
     z-index: 100;
-    background-color: #DDF;
-    padding: 5px;
+    background-color: #2D2D2D;
+    font-variant: small-caps;
+
+    & >
+    {
+        padding: 15px 30px;
+    }
 }
 
-div#leds-layer-checkbox-group
+div#list-of-animations
 {
+    color: #DDD;
     position: absolute;
-    top: 150px;
-    left: 100px;
+    top: 100px;
+    left: 420px;
     z-index: 100;
-    background-color: #DDF;
-    padding: 5px;
-}
+    background-color: #2D2D2D;
+    font-variant: small-caps;
 
-div#leds-mask-layer-checkbox-group
-{
-    position: absolute;
-    top: 200px;
-    left: 100px;
-    z-index: 100;
-    background-color: #DDF;
-    padding: 5px;
-}
+    h1
+    {
+        font-size: 18px;
+        margin-left: 20px;
+    }
 
-div#blending-mode-checkbox-group
-{
-    position: absolute;
-    top: 250px;
-    left: 100px;
-    z-index: 100;
-    background-color: #DDF;
-    padding: 5px;
+    button
+    {
+        display: block;
+        content: "\a";
+        white-space: pre;
+        margin: 15px 30px;
+    }
 }
 
 .polar(@angle, @centerX, @centerY, @radius)

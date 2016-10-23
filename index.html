@@ -12,19 +12,22 @@
             <span>Loading...</span>
         </div>
         <div id="container">
-            <div id="pcb-preview-layer-checkbox-group">
-                <input type="checkbox" ng-model="showPcb" checked="checked"> Show PCB preview
-            </div>
-            <div id="leds-layer-checkbox-group">
-                <input type="checkbox" ng-model="showLeds" checked="checked"> Show LEDs
-            </div>
-            <div id="leds-mask-layer-checkbox-group">
-                <input type="checkbox" ng-model="showLedsMask" checked="checked"> Show LEDs mask
-            </div>
-            <div id="blending-mode-checkbox-group">
-                <input type="checkbox" ng-model="properBlendingMode" checked="checked"> Realistic blending mode
+            <div id="checkboxes">
+                <div id="pcb-preview-layer-checkbox-group">
+                    <input type="checkbox" ng-model="showPcb" checked="checked"> Show PCB preview
+                </div>
+                <div id="leds-layer-checkbox-group">
+                    <input type="checkbox" ng-model="showLeds" checked="checked"> Show LEDs
+                </div>
+                <div id="leds-mask-layer-checkbox-group">
+                    <input type="checkbox" ng-model="showLedsMask" checked="checked"> Show LEDs mask
+                </div>
+                <div id="blending-mode-checkbox-group">
+                    <input type="checkbox" ng-model="properBlendingMode" checked="checked"> Realistic blending mode
+                </div>
             </div>
             <div id="list-of-animations">
+                <h1>Animations</h1>
                 <button ng-click="animate(animation)" ng-repeat="(animationName, animation) in animations">{{ animationName }}</button>
             </div>
             <div id="echo-background"></div>
