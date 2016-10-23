@@ -3,6 +3,7 @@ define(['./module', '../animationRegistry'], function(controllers, animationRegi
 
     controllers.controller('MainController', function($scope, $timeout) {
         $scope.showLeds = true;
+        $scope.showLedsMask = true;
         $scope.showPcb = false;
 
         $scope.leds = [ /* All LEDs are turned off at the beginning, see the below init loop. */ ];
