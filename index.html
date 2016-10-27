@@ -12,33 +12,18 @@
             <span>Loading...</span>
         </div>
         <div id="container">
-            <div id="checkboxes">
-                <div id="pcb-preview-layer-checkbox-group">
-                    <input type="checkbox" ng-model="showPcb" checked="checked"> Show PCB preview
-                </div>
-                <div id="leds-layer-checkbox-group">
-                    <input type="checkbox" ng-model="showLeds" checked="checked"> Show LEDs
-                </div>
-                <div id="leds-mask-layer-checkbox-group">
-                    <input type="checkbox" ng-model="showLedsMask" checked="checked"> Show LEDs mask
-                </div>
-                <div id="blending-mode-checkbox-group">
-                    <input type="checkbox" ng-model="properBlendingMode" checked="checked"> Realistic blending mode
-                </div>
-            </div>
             <div id="list-of-animations">
                 <h1>Animations</h1>
                 <button ng-click="animate(animation)" ng-repeat="(animationName, animation) in animations">{{ animationName }}</button>
             </div>
             <div id="echo-background"></div>
-            <div id="echo-pcb" ng-show="showPcb"></div>
-            <div id="leds" ng-show="showLeds" ng-class="properBlendingMode ? 'proper-blending-mode' : ''">
+            <div id="leds">
                 <div class="led"
                      ng-repeat="i in range(0, 11)"
                      ng-style="{ 'opacity': getOpacityForLed(i), 'background': 'radial-gradient(ellipse at center, ' + getColorForLed(i, 1.0) + ' 0%, ' + getColorForLed(i, 1.0) + ' 6%, ' + getColorForLed(i, 0.0) + ' 64%, ' + getColorForLed(i, 0.0) + ' 100%)' }"
                      ng-attr-id="{{ 'led' + i }}"/>
             </div>
-            <div id="masking-leds" ng-show="showLedsMask"></div>
+            <div id="masking-leds"></div>
         </div>
         <script type="text/javascript" data-main="js/main.js" src="js/lib/require.js"></script>
     </body>

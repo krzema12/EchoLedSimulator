@@ -55,27 +55,11 @@ div#echo-pcb
     overflow: auto;
 }
 
-div#checkboxes
-{
-    color: #DDD;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 100;
-    background-color: #2D2D2D;
-    font-variant: small-caps;
-
-    & >
-    {
-        padding: 15px 30px;
-    }
-}
-
 div#list-of-animations
 {
     color: #DDD;
     position: absolute;
-    top: 170px;
+    top: 10px;
     left: 10px;
     z-index: 100;
     background-color: #2D2D2D;
@@ -158,6 +142,8 @@ div#leds
     max-height: 100%;
     overflow: auto;
 
+    mix-blend-mode: screen;
+
     & > .led
     {
         width: 10rem;
@@ -167,11 +153,6 @@ div#leds
 
         .leds-loop(@leds-quantity);
     }
-}
-
-.proper-blending-mode
-{
-    mix-blend-mode: screen;
 }
 
 div#masking-leds
